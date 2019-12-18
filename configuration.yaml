@@ -1,0 +1,38 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+cloud:
+config:
+frontend:
+history:
+logbook:
+mobile_app:
+ssdp:
+sun:
+system_health:
+updater:
+zeroconf:
+homeassistant:
+  latitude: 37.8637778
+  longitude: -122.2619665
+  elevation: 430
+  unit_system: imperial
+  time_zone: America/Los_Angeles
+  name: Chilton St., Berkeley
+climate:
+  - platform: mitsubishi_mqtt
+    name: "Office"
+    command_topic: "heatpump/office/set"
+    temperature_state_topic: "heatpump/office/status"
+    state_topic: "heatpump/office"
+weather:
+  - platform: nws
+    api_key: berland.ken.berkeley.ca
+    station: LBNL1
+logger:
+  default: critical
+  logs:
+    custom_components.mitsubishi_mqtt.climate: debug
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
