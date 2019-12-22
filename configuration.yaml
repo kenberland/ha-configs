@@ -23,6 +23,21 @@ climate:
     command_topic: "heatpump/office/set"
     temperature_state_topic: "heatpump/office/status"
     state_topic: "heatpump/office"
+  - platform: mitsubishi_mqtt
+    name: "Heather & Ken"
+    command_topic: "heatpump/heatpump-sw/set"
+    temperature_state_topic: "heatpump/heatpump-sw/status"
+    state_topic: "heatpump/heatpump-sw"
+  - platform: mitsubishi_mqtt
+    name: "Izzy & Ellis"
+    command_topic: "heatpump/heatpump-se/set"
+    temperature_state_topic: "heatpump/heatpump-se/status"
+    state_topic: "heatpump/heatpump-se"
+  - platform: mitsubishi_mqtt
+    name: "Harry"
+    command_topic: "heatpump/heatpump-ne/set"
+    temperature_state_topic: "heatpump/heatpump-ne/status"
+    state_topic: "heatpump/heatpump-ne"
 weather:
   - platform: nws
     api_key: berland.ken.berkeley.ca

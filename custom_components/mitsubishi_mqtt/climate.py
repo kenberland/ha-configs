@@ -123,21 +123,21 @@ class MqttClimate(ClimateDevice):
                 self._fan_mode = parsed['fan']
                 self._swing_mode = parsed['vane']
                 if parsed['power'] == "OFF":
-                    _LOGGER.debug("Power Off")
+                    _LOGGER.debug("Topic=%s, Power Off", topic)
                     self._hvac_mode = "OFF"
                     self._current_power = "OFF"
                 else:
-                    _LOGGER.debug("Power On")
+                    _LOGGER.debug("Topic=%s, Power On", topic)
                     self._hvac_mode = parsed['mode']
                     self._current_power = "ON"
             elif topic == self._temperature_state_topic:
-                _LOGGER.debug('Room Temp: {0}'.format(parsed['roomTemperature']))
+                _LOGGER.debug("Topic=%s, Room Temp=%s", topic, parsed['roomTemperature'])
                 self._current_temperature = float(parsed['roomTemperature'])
                 self._current_status = bool(parsed['operating'])
             else:
                 print("unknown topic")
             self.async_write_ha_state()
-            _LOGGER.debug("Power=%s, Operation=%s", self._current_power, self._hvac_mode)
+            _LOGGER.debug("Topic=%s, Power=%s, Operation=%s", topic, self._current_power, self._hvac_mode)
 
         for topic in [self._state_topic, self._temperature_state_topic]:
             add_subscription(topics, topic, message_received)
