@@ -8,7 +8,6 @@ mobile_app:
 ssdp:
 sun:
 system_health:
-updater:
 zeroconf:
 homeassistant:
   latitude: 37.8637778

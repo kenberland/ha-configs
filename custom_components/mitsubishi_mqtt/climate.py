@@ -135,7 +135,7 @@ class MqttClimate(ClimateDevice):
                 self._current_temperature = float(parsed['roomTemperature'])
                 self._current_status = bool(parsed['operating'])
             else:
-                print("unknown topic")
+                _LOGGER.debug("Unknown Topic=%s", topic)
             self.async_write_ha_state()
             _LOGGER.debug("Topic=%s, Power=%s, Operation=%s", topic, self._current_power, self._hvac_mode)
 

@@ -1,1 +1,18 @@
-[]
+- id: '1576985760259'
+  alias: Heat off at night
+  description: Turn off the heat at night
+  trigger:
+  - at: '23:30'
+    platform: time
+  condition: []
+  action:
+  - service: climate.turn_off
+- id: '1576985851174'
+  alias: Heat on in the morning
+  description: ''
+  trigger:
+  - at: 06:30
+    platform: time
+  condition: []
+  action:
+  - service: climate.turn_on
